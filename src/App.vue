@@ -24,6 +24,8 @@ export default {
       } else {
         this.$electron.ipcRenderer.send("backLogin", "backLogin");
       }
+      // const alert = token ? "已登录" : "未登录";
+      // this.$message.info(alert);
     },
     listenIsMaximize() {
       let _this = this;
