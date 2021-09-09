@@ -1,0 +1,166 @@
+.header-component-container {
+    height: 48px;
+    background-color: #2B404D;
+    box-shadow: 0px -1px 0px 0px #313D4F;
+    border: 1px solid #243742;
+    -webkit-app-region: drag;
+
+    .header-component-box {
+        padding: 0 21px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .logo-and-app-name {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            .logo-con {
+                width: 39px;
+                height: 25px;
+                -webkit-app-region: no-drag;
+
+                .logo-image {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .app-name {
+                font-size: 18px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #FFFFFF;
+                margin-left: 28px;
+            }
+        }
+
+        .main-menu-btn-group {
+            height: 100%;
+            align-items: center;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            margin: 0 10px;
+
+            .main-menu-ul {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                flex: 1;
+                justify-content: space-between;
+                max-width: 425px;
+
+                .main-menu-li {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    .main-menu-li-icon-box {
+                        width: 16px;
+                        height: 18px;
+                        margin-top: -3px;
+
+                        .main-menu-li-icon {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .main-menu-li-name {
+                        margin-left: 4px;
+                        font-size: 18px;
+                        font-family: PingFangSC-Semibold, PingFang SC;
+                        font-weight: 600;
+                        color: #A2A6BA;
+
+                        &-active {
+                            color: #0FA0F4;
+                        }
+                    }
+
+                    -webkit-app-region: no-drag;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .system-and-user-setting {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+
+            .setting-btn {
+                font-size: 18px;
+                color: #A2A6BA;
+                margin-right: 8px;
+
+                &-active {
+                    color: #00E7FF;
+                }
+
+                -webkit-app-region: no-drag;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .user-head-con {
+                font-size: 18px;
+                color: #fff;
+                height: 32px;
+                width: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                margin-right: 16px;
+                margin-left: 20px;
+            }
+
+            .user-setting-menu {
+                .user-name {
+                    font-size: 14px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #A2A6BA;
+                    -webkit-app-region: no-drag;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .win-operation-btns {
+                font-size: 18px;
+                color: #fff;
+                margin-left: 10px;
+                display: flex;
+                justify-content: space-between;
+                width: 80px;
+
+                &-active {
+                    color: #00E7FF;
+                }
+
+                -webkit-app-region: no-drag;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+}
