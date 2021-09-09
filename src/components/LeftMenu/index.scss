@@ -1,0 +1,52 @@
+.left-menu-component-container {
+    width: 100%;
+    height: 100%;
+
+    .left-menu-component-box {
+        width: 100%;
+        height: 100%;
+
+        .menu-list-ul {
+            padding-top: 44px;
+
+            .menu-list-li {
+                margin-top: 21px;
+                height: 49px;
+                padding-left: 43px;
+                font-size: 18px;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: #A6ADB4;
+                line-height: 49px;
+                border-left: 4px solid #2B4C61;
+                display: flex;
+                align-items: center;
+
+                .menu-icon {
+                    font-size: 20px;
+                }
+
+                .menu-name {
+                    margin-left: 10px;
+                }
+
+                &-active {
+                    background: linear-gradient(90deg, rgba(10, 229, 240, 0.22) 0%, rgba(4, 199, 221, 0) 100%);
+                    color: #00E7FF;
+                    border-left: 4px solid #00E7FF;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    color: #fff;
+                    background: linear-gradient(90deg, rgba(10, 229, 240, 0.22) 0%, rgba(4, 199, 221, 0) 100%);
+                    border-left: 4px solid #fff;
+                }
+            }
+
+
+
+
+        }
+    }
+}
