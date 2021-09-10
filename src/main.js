@@ -49,6 +49,7 @@ const i18n = new VueI18n({
 })
 
 Vue.use(ElementUI, {
+  size: 'mini',
   i18n: (key, value) => i18n.t(key, value)
 })
 

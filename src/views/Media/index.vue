@@ -1,19 +1,94 @@
 <template>
-  <div class="media-view-container">影像管理</div>
+  <div class="media-view-container">
+    <div class="media-view-box">
+      <div class="page-left-container">
+        <div class="page-left-header">
+          <div class="import-media-image">
+            <img src="../../assets/images/media/file.png" />
+            <div>导入影像</div>
+          </div>
+          <div class="form-container">
+            <el-form :inline="true" :model="searchForm">
+              <el-form-item label="导入时间">
+                <el-date-picker
+                  v-model="searchForm.importTime"
+                  type="daterange"
+                  range-separator="至"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期"
+                >
+                </el-date-picker>
+              </el-form-item>
+              <el-form-item label="检查部位">
+                <el-select
+                  v-model="searchForm.checkPart"
+                  placeholder="检查部位"
+                >
+                  <el-option label="全部" value=""></el-option>
+                  <el-option label="甲状腺" value="1"></el-option>
+                  <el-option label="其他部位" value="9"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="分析">
+                <el-select v-model="searchForm.analysis" placeholder="分析">
+                  <el-option label="全部" value=""></el-option>
+                  <el-option label="有" value="1"></el-option>
+                  <el-option label="无" value="0"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item>
+                <el-input
+                  v-model="searchForm.user"
+                  placeholder="受检者姓名/编号/文件名"
+                ></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="onSubmit">查询</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </div>
+        <div class="page-left-content">
+          <div class="meida-ul-box">
+            <div class="infinite-list" v-infinite-scroll="load">
+              <div v-for="item in count" :key="item" class="meida-ul-box-li">
+                {{ item }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-right-container"></div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'media-view',
-  data () {
-    return {}
+  name: "media-view",
+  data() {
+    return {
+      count: 0,
+      searchForm: {
+        importTime: [],
+        checkPart: "",
+        analysis: "",
+        user: "",
+      },
+    };
   },
-  created () {},
-  mounted () {},
-  beforeDestroy () {},
+  created() {},
+  mounted() {},
+  beforeDestroy() {},
   components: {},
-  methods: {}
-}
+  methods: {
+    onSubmit() {},
+    load() {
+      console.log("load page bottom");
+      this.count += 4;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -5,7 +5,8 @@ import {
   protocol,
   BrowserWindow,
   ipcMain,
-  globalShortcut
+  globalShortcut,
+  Menu
 } from 'electron'
 import {
   createProtocol
@@ -137,9 +138,10 @@ if (!shouldQuit) {
 ipcMain.on('hasLogin', (event, arg) => {
   console.log(arg, 'arg')
   win.setResizable(true)
-  win.setSize(1200, 675)
-  win.setMinimumSize(1200, 675)
-  win.setContentSize(1200, 675)
+  //(1200, 675)
+  win.setSize(1920, 675)
+  win.setMinimumSize(1920, 675)
+  win.setContentSize(1920, 675)
 
   win.center()
   win.show()
