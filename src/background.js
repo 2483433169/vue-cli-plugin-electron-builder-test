@@ -5,7 +5,8 @@ import {
   protocol,
   BrowserWindow,
   ipcMain,
-  globalShortcut
+  globalShortcut,
+  Menu
 } from 'electron'
 import {
   createProtocol

@@ -50,18 +50,11 @@
         </div>
         <div class="page-left-content">
           <div class="meida-ul-box">
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
-            <div class="meida-ul-box-li"></div>
+            <div class="infinite-list" v-infinite-scroll="load">
+              <div v-for="item in count" :key="item" class="meida-ul-box-li">
+                {{ item }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -75,6 +68,7 @@ export default {
   name: "media-view",
   data() {
     return {
+      count: 0,
       searchForm: {
         importTime: [],
         checkPart: "",
@@ -89,7 +83,10 @@ export default {
   components: {},
   methods: {
     onSubmit() {},
-    load() {},
+    load() {
+      console.log("load page bottom");
+      this.count += 4;
+    },
   },
 };
 </script>
