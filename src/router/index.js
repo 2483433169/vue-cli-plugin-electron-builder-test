@@ -182,16 +182,16 @@ let router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('access_token') || ''
-  console.log(to, 'to')
-  if (to.meta.requireAuth && !token) {
-    next({
-      path: 'login'
-    })
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   const token = localStorage.getItem('access_token') || ''
+//   console.log(to, 'to')
+//   // if (to.meta.requireAuth && !token) {
+//   //   next({
+//   //     path: 'login'
+//   //   })
+//   // } else {
+//   //   next()
+//   // }
+// })
 
 export default router

@@ -18,6 +18,7 @@ export default {
       this.setLanguage();
     },
     checkIsLogin() {
+      // localStorage.setItem("access_token", "123456");
       const token = localStorage.getItem("access_token") || "";
       if (token) {
         this.$electron.ipcRenderer.send("hasLogin", "hasLogin");

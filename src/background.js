@@ -31,9 +31,9 @@ let win = null;
 async function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    height: 620,
+    height: 1200,
     useContentSize: true,
-    width: 400,
+    width: 675,
     frame: false,
     show: false,
     backgroundColor: '#23232D',
@@ -81,6 +81,7 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+
 }
 
 // Quit when all windows are closed.
@@ -139,9 +140,9 @@ ipcMain.on('hasLogin', (event, arg) => {
   console.log(arg, 'arg')
   win.setResizable(true)
   //(1200, 675)
-  win.setSize(1920, 675)
-  win.setMinimumSize(1920, 675)
-  win.setContentSize(1920, 675)
+  win.setSize(1200, 675)
+  win.setMinimumSize(1200, 675)
+  win.setContentSize(1200, 675)
 
   win.center()
   win.show()
@@ -153,9 +154,9 @@ ipcMain.on('backLogin', (event, arg) => {
   win.hide()
   console.log(arg, 'arg')
   win.setResizable(false)
-  win.setMinimumSize(400, 620)
-  win.setSize(400, 620)
-  win.setContentSize(400, 620)
+  win.setMinimumSize(1200, 675)
+  win.setSize(1200, 675)
+  win.setContentSize(1200, 675)
 
   win.center()
   win.show()

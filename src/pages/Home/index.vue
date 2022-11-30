@@ -1,21 +1,31 @@
 <template>
   <div class="home-page-container">
-    <Header></Header>
+    <Header :iframeSrc="iframeSrc" @menuChange="menuChange"></Header>
     <div class="home-page-content-container">
-      <keep-alive>
+      <!-- <keep-alive>
         <router-view></router-view>
-      </keep-alive>
+      </keep-alive> -->
+      <iframe :src="iframeSrc" width="100%" height="100%"></iframe>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '../../components/Heder'
+import Header from "../../components/Heder";
 export default {
-  name: 'home-page',
+  name: "home-page",
   components: { Header },
-  methods: {}
-}
+  data() {
+    return {
+      iframeSrc: "http://192.168.1.99:17541/",
+    };
+  },
+  methods: {
+    menuChange(src) {
+      this.iframeSrc = src;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
