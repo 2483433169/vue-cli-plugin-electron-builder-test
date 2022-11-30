@@ -5,10 +5,29 @@
         <div @click="openTestExample" class="logo-con">
           <img src="../../assets/images/login/logo.png" class="logo-image" />
         </div>
-        <div class="app-name">超声影像智能辅助诊断系统</div>
+        <!-- <div class="app-name">超声影像智能辅助诊断系统</div> -->
+        <div class="app-name">Tend Studio</div>
       </div>
       <div class="main-menu-btn-group">
         <div class="main-menu-ul">
+          <div
+            class="main-menu-li"
+            v-for="(item, index) in menuList"
+            :key="index"
+            @click="changeView(item)"
+          >
+            <div class="main-menu-li-icon-box"></div>
+            <div
+              :class="[
+                { 'main-menu-li-name-active': iframeSrc === item.menuPath },
+                'main-menu-li-name',
+              ]"
+            >
+              {{ item.menuName }}
+            </div>
+          </div>
+        </div>
+        <!-- <div class="main-menu-ul">
           <div
             class="main-menu-li"
             v-for="(item, index) in menuList"
@@ -32,10 +51,10 @@
               {{ item.menuName }}
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="system-and-user-setting">
-        <div
+        <!-- <div
           :class="[
             { 'setting-btn-active': $route.path.indexOf(item.menuPath) > -1 },
             'setting-btn',
@@ -45,12 +64,12 @@
           @click="changeView(item)"
         >
           <i :class="item.menuIcon"></i>
-        </div>
-        <div class="user-head-con">
+        </div> -->
+        <!-- <div class="user-head-con">
           <i class="el-icon-user-solid"></i>
-        </div>
+        </div> -->
         <div class="user-setting-menu">
-          <el-dropdown trigger="hover" @command="handleCommand">
+          <!-- <el-dropdown trigger="hover" @command="handleCommand">
             <span class="el-dropdown-link">
               <span class="user-name">吴医生</span
               ><i class="el-icon-arrow-down el-icon--right"></i>
@@ -61,7 +80,7 @@
               >
               <el-dropdown-item command="loginOut">退出登录</el-dropdown-item>
             </el-dropdown-menu>
-          </el-dropdown>
+          </el-dropdown> -->
         </div>
         <div class="win-operation-btns">
           <i class="el-icon-minus" @click="changeWin('mini')"></i>
@@ -82,82 +101,102 @@
 
 <script>
 export default {
-  name: 'header-component',
+  name: "header-component",
   components: {},
-  data () {
+  props: ["iframeSrc"],
+  data() {
     return {
+      // menuList: [
+      //   {
+      //     menuName: "影像管理",
+      //     menuIcon: require("@/assets/images/component/header/media.png"),
+      //     activeIcon: require("@/assets/images/component/header/media-active.png"),
+      //     menuPath: "/media",
+      //   },
+      //   {
+      //     menuName: "检查记录",
+      //     menuIcon: require("@/assets/images/component/header/check.png"),
+      //     activeIcon: require("@/assets/images/component/header/check-active.png"),
+      //     menuPath: "/check",
+      //   },
+      //   {
+      //     menuName: "受检者管理",
+      //     menuIcon: require("@/assets/images/component/header/record.png"),
+      //     activeIcon: require("@/assets/images/component/header/record-active.png"),
+      //     menuPath: "/record",
+      //   },
+      // ],
       menuList: [
         {
-          menuName: '影像管理',
-          menuIcon: require('@/assets/images/component/header/media.png'),
-          activeIcon: require('@/assets/images/component/header/media-active.png'),
-          menuPath: '/media'
+          menuName: "任务可视化",
+          menuPath: "http://192.168.1.99:17541/",
         },
+        // {
+        //   menuName: "GitLab",
+        //   menuPath: "http://192.168.1.197:9000/",
+        // },
         {
-          menuName: '检查记录',
-          menuIcon: require('@/assets/images/component/header/check.png'),
-          activeIcon: require('@/assets/images/component/header/check-active.png'),
-          menuPath: '/check'
+          menuName: "禅道",
+          menuPath: "http://192.168.1.197:8091/zentao/bug-browse.html",
         },
-        {
-          menuName: '受检者管理',
-          menuIcon: require('@/assets/images/component/header/record.png'),
-          activeIcon: require('@/assets/images/component/header/record-active.png'),
-          menuPath: '/record'
-        }
+        // {
+        //   menuName: "邮箱",
+        //   menuPath: "https://mail.tendmc.com/",
+        // },
       ],
       settingMenu: [
         {
-          menuPath: '/message',
-          menuIcon: 'el-icon-message-solid',
-          menuName: '消息中心'
+          menuPath: "/message",
+          menuIcon: "el-icon-message-solid",
+          menuName: "消息中心",
         },
         {
-          menuPath: '/dataStatic',
-          menuIcon: 'el-icon-s-data',
-          menuName: '数据统计'
+          menuPath: "/dataStatic",
+          menuIcon: "el-icon-s-data",
+          menuName: "数据统计",
         },
         {
-          menuPath: '/setting',
-          menuIcon: 'el-icon-s-tools',
-          menuName: '设置管理'
-        }
-      ]
-    }
+          menuPath: "/setting",
+          menuIcon: "el-icon-s-tools",
+          menuName: "设置管理",
+        },
+      ],
+    };
   },
   methods: {
-    openTestExample () {
-      const env = process.env.NODE_ENV
-      console.log(env, 'env')
+    openTestExample() {
+      const env = process.env.NODE_ENV;
+      console.log(env, "env");
       // if (env !== "development") return;
       this.$router.push({
-        path: '/test'
-      })
+        path: "/test",
+      });
     },
-    changeView (item) {
-      this.$router.push({
-        path: item.menuPath
-      })
+    changeView(item) {
+      // this.$router.push({
+      //   path: item.menuPath,
+      // });
+      this.$emit("menuChange", item.menuPath);
     },
-    handleCommand (command) {
-      if (command === 'loginOut') {
-        this.$store.dispatch('LOGIN_OUT')
-        localStorage.removeItem('access_token')
-        this.$router.replace({ path: '/login' })
-        this.$electron.ipcRenderer.send('backLogin')
+    handleCommand(command) {
+      if (command === "loginOut") {
+        this.$store.dispatch("LOGIN_OUT");
+        localStorage.removeItem("access_token");
+        this.$router.replace({ path: "/login" });
+        this.$electron.ipcRenderer.send("backLogin");
       }
     },
-    changeWin (event) {
-      if (event === 'mini') {
-        this.$electron.ipcRenderer.send('windowMin')
-      } else if (event === 'fullScreen') {
-        this.$electron.ipcRenderer.send('windowMax')
-      } else if (event === 'close') {
-        this.$electron.ipcRenderer.send('closeApp')
+    changeWin(event) {
+      if (event === "mini") {
+        this.$electron.ipcRenderer.send("windowMin");
+      } else if (event === "fullScreen") {
+        this.$electron.ipcRenderer.send("windowMax");
+      } else if (event === "close") {
+        this.$electron.ipcRenderer.send("closeApp");
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
