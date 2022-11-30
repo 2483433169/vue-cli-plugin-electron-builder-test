@@ -19,12 +19,12 @@ export default {
     },
     checkIsLogin() {
       // localStorage.setItem("access_token", "123456");
-      const token = localStorage.getItem("access_token") || "";
-      if (token) {
-        this.$electron.ipcRenderer.send("hasLogin", "hasLogin");
-      } else {
-        this.$electron.ipcRenderer.send("backLogin", "backLogin");
-      }
+      // const token = localStorage.getItem("access_token") || "";
+      // if (token) {
+      //   this.$electron.ipcRenderer.send("hasLogin", "hasLogin");
+      // } else {
+      //   this.$electron.ipcRenderer.send("backLogin", "backLogin");
+      // }
       // const alert = token ? "已登录" : "未登录";
       // this.$message.info(alert);
     },
