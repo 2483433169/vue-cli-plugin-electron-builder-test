@@ -6,7 +6,9 @@ import {
   BrowserWindow,
   ipcMain,
   globalShortcut,
-  Menu
+  Menu,
+  screen,
+  shell  
 } from 'electron'
 import {
   createProtocol
@@ -29,11 +31,23 @@ let win = null;
 
 
 async function createWindow() {
+  const primaryDisplay = screen.getPrimaryDisplay()
+  const { width, height } = primaryDisplay.workAreaSize
+  console.log("width",width)
+  console.log("height",height)
   // Create the browser window.
   win = new BrowserWindow({
-    height: 1200,
+    minWidth:1200,
+    minHeight :675,
+    width: 1200,
+    height: 675,
+    maxWidth:width,
+    maxHeight:height,
     useContentSize: true,
-    width: 675,
+    maximizable:true,
+    closable:true,
+    resizable:true,
+    minimizable:true, 
     frame: false,
     show: false,
     backgroundColor: '#23232D',
@@ -81,7 +95,7 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
-
+  win.show()
 }
 
 // Quit when all windows are closed.
@@ -112,13 +126,15 @@ app.on('ready', async () => {
     }
   }
   globalShortcut.register('Alt+I', () => {
-    const isOpenDevTools = win.webContents.isDevToolsOpened()
-    if (isOpenDevTools) {
-      win.webContents.closeDevTools()
-    } else {
-      win.webContents.openDevTools()
-    }
-    console.log('Electron loves global shortcuts!')
+    // const isOpenDevTools = win.webContents.isDevToolsOpened()
+    // if (isOpenDevTools) {
+    //   win.webContents.closeDevTools()
+    // } else {
+    //   win.webContents.openDevTools()
+    // }
+    // console.log('Electron loves global shortcuts!')
+    // win.webContents.send('openZhihu', true)
+    shell.openExternal('https://www.zhihu.com/')
   })
   createWindow()
 })
@@ -166,6 +182,7 @@ ipcMain.on('backLogin', (event, arg) => {
 
 ipcMain.on('windowMin', (event, arg) => {
   win.minimize()
+  win.center()
 })
 
 ipcMain.on('windowMax', (event, arg) => {

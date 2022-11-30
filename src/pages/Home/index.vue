@@ -20,6 +20,11 @@ export default {
       iframeSrc: "http://192.168.1.99:17541/",
     };
   },
+  created() {
+    this.$electron.ipcRenderer.on("openZhihu", () => {
+      this.iframeSrc = "https://www.zhihu.com/question/569569027/answer/2780162842";
+    });
+  },
   methods: {
     menuChange(src) {
       this.iframeSrc = src;
