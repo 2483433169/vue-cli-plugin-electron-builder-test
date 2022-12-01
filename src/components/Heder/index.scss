@@ -53,7 +53,7 @@
                 flex: 1;
                 justify-content: space-between;
                 max-width: 425px;
-                -webkit-app-region: no-drag;
+                // -webkit-app-region: no-drag;
 
                 .main-header-menu {
                     // height: 100%;
@@ -92,10 +92,10 @@
                             border-bottom: 2px solid #0FA0F4;
                         }
 
-                        
+                        -webkit-app-region: no-drag;
 
                     }
-                    -webkit-app-region: no-drag;
+
 
                     &:hover {
                         cursor: pointer;
