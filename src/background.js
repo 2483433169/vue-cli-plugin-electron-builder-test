@@ -59,6 +59,7 @@ async function createWindow() {
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     }
   })
+  
   win.setMenu(null)
 
   win.on('closed', () => {
@@ -100,7 +101,10 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+  win.title='Tend Studio'
+  win.setTitle('Tend Studio')
   win.show()
+  
 }
 
 // Quit when all windows are closed.
