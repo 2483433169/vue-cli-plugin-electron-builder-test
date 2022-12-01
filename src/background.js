@@ -73,6 +73,11 @@ async function createWindow() {
     win.webContents.send('isMaximize', true)
   })
 
+  win.on('focus', () => {
+    console.log('focus')
+    win.center()
+  })
+
   win.on('unmaximize', () => {
     console.log('unmaximize')
     win.webContents.send('isMaximize', false)
@@ -182,7 +187,7 @@ ipcMain.on('backLogin', (event, arg) => {
 
 ipcMain.on('windowMin', (event, arg) => {
   win.minimize()
-  win.center()
+  // win.center()
 })
 
 ipcMain.on('windowMax', (event, arg) => {
