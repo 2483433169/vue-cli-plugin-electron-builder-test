@@ -5,11 +5,11 @@
 </template>
 
 <script>
+
 export default {
   name: "vue-markdown",
   mounted() {
     this.init();
-    
   },
   created() {},
   methods: {
