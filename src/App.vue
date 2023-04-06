@@ -10,6 +10,7 @@ export default {
   mounted() {
     this.init();
     
+
   },
   created() {},
   methods: {
